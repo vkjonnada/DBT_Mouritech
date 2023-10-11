@@ -1,0 +1,23 @@
+version: 2
+
+sources: 
+  - name: src
+    schema: src 
+    database: |
+      {%- if target.name == "default" -%} dbt_dev
+      {%- elif target.name == "dev" -%} dbt_dev
+      {%- elif target.name == "qa" -%} dbt_qa
+      {%- elif target.name == "prd" -%} dbt_prd
+      {%- else -%} invalid_target_name_please_check
+      {%- endif -%}
+
+    tables:
+      - name: call_center_test
+      - name: product
+      - name: employee
+        freshness: # default freshness
+          warn_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
+        loaded_at_field: hire_date
+      - name: company
+      - name: rules

@@ -1,0 +1,1 @@
+select * from {{ ref('dim_user')}} where 1=1
