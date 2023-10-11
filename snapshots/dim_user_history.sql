@@ -1,12 +1,11 @@
 {% snapshot dim_user_history %}
-
  
 
 {{
 
     config(
 
-        unique_key= 'user_key',
+        unique_key= 'EMPLOYEE_ID',
 
         strategy='check',
 
