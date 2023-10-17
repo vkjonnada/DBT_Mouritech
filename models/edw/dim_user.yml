@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dim_user
+    columns:
+      - name: department_id
+        tests:
+          - unique:
+              config:
+                store_failures: false  # always store failures
+          - not_null:
+              config:
+                store_failures: true  # never store failures
